@@ -63,4 +63,21 @@ describe Admin::CategoriesController do
     assert_raise(ActiveRecord::RecordNotFound) { Category.find(test_id) }
   end
   
+############## NEW RSPEC TEST FOR TESTING ####################
+
+  describe "test new category" do
+    it "should create a new category" do
+      post :new, category: {id: 1222, name: "Test Category 1"}
+      response.should redirect_to '/admin/categories/new'
+    end
+  end
+  
+  describe "test delete category" do
+    it "should delete category" do
+      cat1 = mock(Category, id: 1223, name: "Test Category 2")
+      Category.stub(:find => cat1)
+      response.should be_success
+    end
+  end
+  
 end
