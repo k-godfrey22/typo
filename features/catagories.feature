@@ -23,3 +23,6 @@ Feature: Manage Catagories
       And I press "Save"
       And I should see "General- Change"
   
+    Scenario: Save
+      Then I press "Save"
+      Then I should see "Categories"

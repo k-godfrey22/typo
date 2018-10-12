@@ -34,7 +34,7 @@ class Admin::CategoriesController < Admin::BaseController
     if request.post?
       respond_to do |format|
         format.html { save_category }
-        format.js do 
+        format.js do
           @category.save
           @article = Article.new
           @article.categories << @category
@@ -47,7 +47,8 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def save_category
-    if @category.save!
+    if @category.save
+      @category.save!
       flash[:notice] = _('Category was successfully saved.')
     else
       flash[:error] = _('Category could not be saved.')
